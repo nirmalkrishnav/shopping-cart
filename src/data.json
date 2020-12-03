@@ -1,0 +1,17 @@
+{
+    "products": [
+        {
+            "_id": 1,
+            "image": "/images/jacket1.png",
+            "title": "Jacket Mesh - Level 1 Armor",
+            "desc": "Best jacket in in the world",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 10.99
+        }
+    ]
+}
