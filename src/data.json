@@ -12,6 +12,30 @@
                 "XL"
             ],
             "price": 10.99
+        },
+         {
+            "_id": 2,
+            "image": "/images/jacket2.png",
+            "title": "Jacket Plates - Level 2 Armor",
+            "desc": "2nd Best jacket in in the world",
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 8.99
+        },
+         {
+            "_id": 3,
+            "image": "/images/jacket3.png",
+            "title": "Jacket Leather",
+            "desc": "Apple skin leather jacket designer wear",
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 15.99
         }
     ]
 }

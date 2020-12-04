@@ -31,11 +31,11 @@ class App extends React.Component {
 
         </header>
         <main className="flex-grow p-3">
-          <div className="grid grid-cols-2">
-            <div className="">
+          <div className="grid grid-cols-4 gap-2">
+            <div className="col-span-3">
               <Product products={this.state.products} />
             </div>
-            <div>
+            <div className="col-span-1">
               Cart
             </div>
           </div>
