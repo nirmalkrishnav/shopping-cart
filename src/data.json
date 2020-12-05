@@ -1,0 +1,41 @@
+{
+    "products": [
+        {
+            "_id": 1,
+            "image": "/images/jacket1.jpg",
+            "title": "Jacket Mesh - Level 1 Armor",
+            "desc": "Best jacket in in the world",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 10.99
+        },
+         {
+            "_id": 2,
+            "image": "/images/jacket2.jpg",
+            "title": "Jacket - Level 2 Armor",
+            "desc": "2nd Best jacket in in the world",
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 8.99
+        },
+         {
+            "_id": 3,
+            "image": "/images/jacket3.jpg",
+            "title": "Jacket Leather",
+            "desc": "Apple skin leather jacket designer wear",
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 15.99
+        }
+    ]
+}
