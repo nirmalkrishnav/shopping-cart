@@ -31,7 +31,7 @@ class App extends React.Component {
 
         </header>
         <main className="flex-grow p-3">
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid lg:grid-cols-4 md:grid-cols-4  gap-2 sm:grid-cols-1">
             <div className="col-span-3">
               <Product products={this.state.products} />
             </div>

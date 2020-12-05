@@ -1,14 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
 }
 
 main {
-  flex: 1; /* Or flex-grow: 1;*/
+  flex: 1;
+  /* Or flex-grow: 1;*/
 }
 
+.product-image {
+  height: 50vh;
+}
