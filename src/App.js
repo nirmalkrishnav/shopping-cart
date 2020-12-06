@@ -1,4 +1,5 @@
 import React from 'react';
+import Filter from './components/Filter';
 import Product from './components/Product';
 import data from './data.json';
 
@@ -12,6 +13,38 @@ class App extends React.Component {
       size: '',
       sort: ''
     }
+  }
+
+  sortProducts = (event) => {
+    const sortVal = event.target.value;
+    this.setState((state) => ({
+      sort: sortVal,
+      products: this.state.products.slice().sort((a, b) => {
+        if (sortVal === 'Lowest') {
+          return ((a.price > b.price) ? 1 : -1)
+        } else if (sortVal === 'Highest') {
+          return ((a.price < b.price) ? 1 : -1)
+        } else {
+          return ((a._id > b._id) ? 1 : -1)
+        }
+      })
+    }))
+  }
+
+  filterProducts = (event) => {
+    if (event.target.value === '') {
+      this.setState({
+        size: event.target.value,
+        products: data.products
+      })
+    } else {
+      this.setState({
+        size: event.target.value,
+        products: data.products.filter(prod => prod.sizes.includes(event.target.value))
+
+      })
+    }
+
   }
 
   render() {
@@ -33,6 +66,12 @@ class App extends React.Component {
         <main className="flex-grow p-3">
           <div className="grid lg:grid-cols-4 md:grid-cols-4  gap-2 sm:grid-cols-1">
             <div className="col-span-3">
+              <Filter count={this.state.products.length}
+                size={this.state.size}
+                sort={this.state.sort}
+                filterProducts={this.filterProducts}
+                sortProducts={this.sortProducts}
+              />
               <Product products={this.state.products} />
             </div>
             <div className="col-span-1">
