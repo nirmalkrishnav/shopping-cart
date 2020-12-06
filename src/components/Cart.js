@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import formatCurrency from '../helpers/util';
 
 export default class Filter extends Component {
+
+    total = () => {
+        return this.props.cartItems.reduce((a, c) => a + (c.price * c.count), 0);
+    }
+
+    tax = () => {
+        return ((3 / 100) * this.total());
+    }
+
+    nettTotal = () => {
+        return this.total() + this.tax();
+    }
+
     render() {
         const { cartItems } = this.props;
 
@@ -36,6 +49,26 @@ export default class Filter extends Component {
                         </div>)
                     })}
                 </div>
+                {cartItems.length !== 0 ?
+                    <>
+                        <div class="grid my-5 grid-cols-2">
+                            <div className="my-2">Tax 3%</div>
+                            <div className="my-2 text-right">
+                                {formatCurrency(this.tax())}
+                            </div>
+
+                            <div className="my-2 font-black font-medium">Total</div>
+                            <div className="my-2 text-right">
+                                {formatCurrency(this.nettTotal())}
+                            </div>
+                        </div>
+                        <div className="flex justify-end">
+                            <button className="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">Proceed</button>
+                        </div>
+                    </>
+
+                    : ''
+                }
             </div>
         )
     }
