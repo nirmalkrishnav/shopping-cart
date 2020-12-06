@@ -51,7 +51,7 @@ export default class Filter extends Component {
                 </div>
                 {cartItems.length !== 0 ?
                     <>
-                        <div class="grid my-5 grid-cols-2">
+                        <div className="grid my-5 grid-cols-2">
                             <div className="my-2">Tax 3%</div>
                             <div className="my-2 text-right">
                                 {formatCurrency(this.tax())}
