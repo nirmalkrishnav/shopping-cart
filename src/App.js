@@ -33,6 +33,14 @@ class App extends React.Component {
     this.setState({ cartItems: cartItemsCopy })
   }
 
+  removeFromCart = (prod) => {
+    const currentCartItems = this.state.cartItems.slice();
+
+    this.setState({
+      cartItems: currentCartItems.filter(item => item._id !== prod._id)
+    })
+  }
+
   sortProducts = (event) => {
     const sortVal = event.target.value;
     this.setState((state) => ({
@@ -93,7 +101,7 @@ class App extends React.Component {
               <Product products={this.state.products} addToCart={this.addToCart} />
             </div>
             <div className="col-span-1">
-              <Cart cartItems={this.state.cartItems} />
+              <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} />
             </div>
           </div>
 
