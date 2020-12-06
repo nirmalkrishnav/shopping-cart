@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import formatCurrency from '../helpers/util';
+import Fade from 'react-reveal/Fade';
 
 export default class Filter extends Component {
 
@@ -53,29 +54,32 @@ export default class Filter extends Component {
                         <div>You have {cartItems.length} items in the cart</div>}
 
                 </div>
-                <div className="">
-                    {this.props.cartItems.map((item, index) => {
-                        return (<div key={item._id} className="flex">
-                            <div className="flex-none w-11 relative">
-                                <img src={item.image} alt={item.desc} className="absolute inset-0 w-full h-full object-cover rounded-lg" />
-                            </div>
-                            <div className="flex-auto pl-6">
-                                <div className="flex flex-wrap items-baseline">
-                                    {item.title}
+                <Fade left cascade>
+                    <div className="">
+                        {this.props.cartItems.map((item, index) => {
+                            return (<div key={item._id} className="flex">
+                                <div className="flex-none w-11 relative">
+                                    <img src={item.image} alt={item.desc} className="absolute inset-0 w-full h-full object-cover rounded-lg" />
                                 </div>
-                                <div className="flex flex-wrap items-baseline">
-                                    {formatCurrency(item.price)} x {item.count}
-                                </div>
-                                <div className="flex space-x-3 mb-4 text-sm font-semibold">
-                                    <div className="flex-auto flex space-x-3">
-                                        <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" onClick={() => this.props.removeFromCart(item)}>Remove</button>
+                                <div className="flex-auto pl-6">
+                                    <div className="flex flex-wrap items-baseline">
+                                        {item.title}
+                                    </div>
+                                    <div className="flex flex-wrap items-baseline">
+                                        {formatCurrency(item.price)} x {item.count}
+                                    </div>
+                                    <div className="flex space-x-3 mb-4 text-sm font-semibold">
+                                        <div className="flex-auto flex space-x-3">
+                                            <button className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" onClick={() => this.props.removeFromCart(item)}>Remove</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>)
-                    })}
-                </div>
+                            </div>)
+                        })}
+                    </div>
+                </Fade>
+
                 {cartItems.length !== 0 ?
                     <>
                         <div className="grid my-5 grid-cols-2">
@@ -97,28 +101,29 @@ export default class Filter extends Component {
                     : ''
                 }
 
-
-                {this.state.showCheckout &&
-                    <form onSubmit={this.checkout}>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="email" type="email" required onChange={this.handleInput} />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                            <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="name" type="text" required onChange={this.handleInput} />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Address</label>
-                            <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="address" type="text" required onChange={this.handleInput} />
-                        </div>
-                        <div>
-                            <button type="submit" className="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
-                                Checkout
+                <Fade top cascade>
+                    {this.state.showCheckout && cartItems.length > 0 &&
+                        <form onSubmit={this.checkout}>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="email" type="email" required onChange={this.handleInput} />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                                <input className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="name" type="text" required onChange={this.handleInput} />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                                <textarea className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" name="address" type="text" required onChange={this.handleInput} />
+                            </div>
+                            <div>
+                                <button type="submit" className="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
+                                    Checkout
                             </button>
-                        </div>
-                    </form>
-                }
+                            </div>
+                        </form>
+                    }
+                </Fade>
             </div>
         )
     }

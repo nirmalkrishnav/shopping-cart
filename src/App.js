@@ -16,7 +16,7 @@ class App extends React.Component {
       cartItems: JSON.parse(localStorage.getItem('cartItems')) && JSON.parse(localStorage.getItem('cartItems')).length > 0 ? JSON.parse(localStorage.getItem('cartItems')) : []
     }
   }
-  
+
   createOrder = (order) => {
     alert('New order created for' + order.name)
   }
@@ -45,6 +45,7 @@ class App extends React.Component {
       cartItems: currentCartItems.filter(item => item._id !== prod._id)
     })
     localStorage.setItem("cartItems", JSON.stringify(currentCartItems.filter(item => item._id !== prod._id)));
+    
   }
 
   sortProducts = (event) => {
