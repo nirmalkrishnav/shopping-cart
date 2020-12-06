@@ -16,6 +16,10 @@ class App extends React.Component {
       cartItems: JSON.parse(localStorage.getItem('cartItems')) && JSON.parse(localStorage.getItem('cartItems')).length > 0 ? JSON.parse(localStorage.getItem('cartItems')) : []
     }
   }
+  
+  createOrder = (order) => {
+    alert('New order created for' + order.name)
+  }
 
   addToCart = (prod) => {
     const cartItemsCopy = this.state.cartItems.slice();
@@ -101,7 +105,7 @@ class App extends React.Component {
               <Product products={this.state.products} addToCart={this.addToCart} />
             </div>
             <div className="col-span-1">
-              <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} />
+              <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} createOrder={this.createOrder} />
             </div>
           </div>
 
