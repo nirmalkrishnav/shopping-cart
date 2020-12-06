@@ -13,28 +13,62 @@
             ],
             "price": 10.99
         },
-         {
+        {
             "_id": 2,
             "image": "/images/jacket2.jpg",
             "title": "Jacket - Level 2 Armor",
-            "desc": "2nd Best jacket in in the world",
+            "desc": "Attain ultimate comfort and royal status by wearing this ultra-comfortable Diamond Quilted Bomber Jacket from the bestselling online brand FanIdeaz. Crafted out of smooth cotton fabric and polyester mix, this Hoodie is highly durable, comfort wear. Team up these fashionable jackets with blue or Black denim lowers and sneakers. Known for chic appeal and premium craft, if you want export quality winter hoodies, you are at the correct page. It's one of the Top Selling jacket and Most liked jacket available in India. A Henley Neck Jacket is a collarless pullover shirt, characterized by a silver lining zip beneath the round neckline, which resembles and work as fusion of Jacket and Henley Neck style will lead this jacket to be unique and stylish jackets of all time. To use this jacket as stylish jacket, we made a side pocket instead of kangaroo pocket. So, you can use it as jacket as well as jacket based on the situation. Diamond shaped pallets embedded with the cloth for peak of style and comfort.",
             "sizes": [
                 "M",
                 "L"
             ],
             "price": 8.99
         },
-         {
+        {
             "_id": 3,
             "image": "/images/jacket3.jpg",
             "title": "Jacket Leather",
-            "desc": "Apple skin leather jacket designer wear",
+            "desc": "INKKR Presenting solid pattern jacket which comes with a zip closure that makes it easy to wear. Moreover, the used of a premium quality material in the making ensures a hassle free maintenance. We deal in impressive taste in fashion which enhance your clothing collection.",
             "sizes": [
                 "M",
                 "L",
                 "XL"
             ],
             "price": 15.99
+        },
+        {
+            "_id": 4,
+            "image": "/images/jacket4.jpg",
+            "title": "Pomo-Z Men's Casual Bomber Jacket",
+            "desc": "Men classic lightweight durable stand collar jackets. Long sleeve zip up jacket coat with elastic cuff. Windproof, warm,quick-drying, heavy polyester lining, skin-friendly and comfortable.",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "price": 25
+        },
+        {
+            "_id": 5,
+            "image": "/images/jacket5.jpg",
+            "title": "VIMAL JONNEY Men's Cotton Hooded Hoodie",
+            "desc": "Shop from a wide range of Hoodie from VIMAL JONNEY Perfect for your everyday use, you could layer them over a stylish T-Shirt, Polo or Casual shirt to complete the look.",
+            "sizes": [
+                "M",
+                "L"
+            ],
+            "price": 19
+        },
+        {
+            "_id": 6,
+            "image": "/images/jacket6.jpg",
+            "title": "BAGHADBILLO LINKINPARK Printed Unisex Cotton Hoodies Sweatshirt for Men and Women",
+            "desc": "Winter is naughty in many layers, so keep it out of your system with this colourful 100 % cotton hooded sweatshirts from the High Hill. Combining the ease of acrylic with this regular-fit sweatshirt with attached hooded will add grace to your look. Pair it with a jeans/trousers/chinos and this utterly soft sweater will make other guys go green with envy. BAGHADBILLO offers quality casual wear in the widest variety which makes it easy to choose, at prices that are easy to reach and excellent service support which makes shopping easy to enjoy.BAGHADBILLO products are made of premium fabrics to ensure the best quality and great comfort. BAGHADBILLO deals in Men's Printed T-Shirts, Full Sleeve T-shirts, Polo T-Shirts, Sweatshirts for Mens, Shirts and Jeans and we will be adding more products to keep you updated with trends.BAGHADBILLO keeps inventing to help you keep inventing exciting new experiences in your life!",
+            "sizes": [
+                "L"
+            ],
+            "price": 18
         }
     ]
 }
