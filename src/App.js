@@ -1,6 +1,7 @@
 import React from 'react';
 import Filter from './components/Filter';
 import Product from './components/Product';
+import Cart from './components/Cart';
 import data from './data.json';
 
 class App extends React.Component {
@@ -11,8 +12,25 @@ class App extends React.Component {
     this.state = {
       products: data.products,
       size: '',
-      sort: ''
+      sort: '',
+      cartItems: []
     }
+  }
+
+  addToCart = (prod) => {
+    const cartItemsCopy = this.state.cartItems.slice();
+    let alreadyInCart = false;
+    cartItemsCopy.forEach(item => {
+      if (item._id === prod._id) {
+        item.count++;
+        alreadyInCart = true;
+      }
+    })
+    if (!alreadyInCart) {
+      cartItemsCopy.push({ ...prod, count: 1 });
+    }
+
+    this.setState({ cartItems: cartItemsCopy })
   }
 
   sortProducts = (event) => {
@@ -72,10 +90,10 @@ class App extends React.Component {
                 filterProducts={this.filterProducts}
                 sortProducts={this.sortProducts}
               />
-              <Product products={this.state.products} />
+              <Product products={this.state.products} addToCart={this.addToCart} />
             </div>
             <div className="col-span-1">
-              Cart
+              <Cart cartItems={this.state.cartItems} />
             </div>
           </div>
 
