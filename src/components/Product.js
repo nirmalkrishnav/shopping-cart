@@ -3,15 +3,19 @@ import formatCurrency from '../helpers/util';
 import Fade from 'react-reveal/Fade';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
+import { connect } from 'react-redux';
+import { fetchProducts } from './../actions/product.actions';
 
-export default class Product extends Component {
+class Product extends Component {
     constructor(props) {
         super();
         this.state = {
             productInModal: null
         };
     }
-
+    componentDidMount() {
+        this.props.fetchProducts();
+    }
     openModal = (productInModal) => {
         this.setState({ productInModal });
     }
@@ -36,36 +40,43 @@ export default class Product extends Component {
         };
 
         return (
-            <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1">
+            <>
                 <Fade bottom cascade>
-                    {this.props.products.map((prod, index) => {
-                        return (
-                            <div key={index} className="p-6 bg-white shadow-sm">
-                                <div className="flex justify-center">
-                                    <a href={"#" + prod._id} onClick={() => this.openModal(prod)}>
-                                        <img className="product-image" src={prod.image} alt={prod.desc} />
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href={"#" + prod.id}>
-                                        <div className="text-md font-medium text-black">{prod.title}</div>
-                                    </a>
-                                </div>
-                                <div className="flex content-center justify-between my-3">
-                                    <div className="text-3xl text-gray-500">
-                                        {formatCurrency(prod.price)}
-                                    </div>
-                                    <div>
-                                        <button
-                                            onClick={() => this.props.addToCart(prod)}
-                                            className="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
-                                            Add to cart
-                                </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
+                    {!this.props.products > 0 ? (<div>Loading...</div>) :
+                        (<div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1">
+                            {
+                                this.props.products.map((prod, index) => {
+                                    return (
+
+                                        <div key={index} className="p-6 bg-white shadow-sm">
+                                            <div className="flex justify-center">
+                                                <a href={"#" + prod._id} onClick={() => this.openModal(prod)}>
+                                                    <img className="product-image" src={prod.image} alt={prod.desc} />
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href={"#" + prod.id}>
+                                                    <div className="text-md font-medium text-black">{prod.title}</div>
+                                                </a>
+                                            </div>
+                                            <div className="flex content-center justify-between my-3">
+                                                <div className="text-3xl text-gray-500">
+                                                    {formatCurrency(prod.price)}
+                                                </div>
+                                                <div>
+                                                    <button
+                                                        onClick={() => this.props.addToCart(prod)}
+                                                        className="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
+                                                        Add to cart
+                                                       </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>)
+                    }
                 </Fade>
                 {productInModal && (
                     <Modal isOpen={true}
@@ -90,8 +101,8 @@ export default class Product extends Component {
                                             {productInModal.desc}
                                         </p>
                                         <p className="text-gray-900 text-base">
-                                            {productInModal.sizes.map(size => (
-                                                <span>
+                                            {productInModal.sizes.map((size, index) => (
+                                                <span key={index}>
                                                     {" "}
                                                     <button>{size}</button>
                                                 </span>
@@ -116,8 +127,11 @@ export default class Product extends Component {
                         </Zoom>
                     </Modal>
                 )}
-
-            </div>
+            </>
         )
     }
 }
+
+export default connect((state) => ({ products: state.products.items }), {
+    fetchProducts
+})(Product);

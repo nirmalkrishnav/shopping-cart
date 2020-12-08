@@ -3,6 +3,9 @@ import Filter from './components/Filter';
 import Product from './components/Product';
 import Cart from './components/Cart';
 import data from './data.json';
+import store from './store';
+import { Provider } from 'react-redux';
+
 
 class App extends React.Component {
 
@@ -45,7 +48,7 @@ class App extends React.Component {
       cartItems: currentCartItems.filter(item => item._id !== prod._id)
     })
     localStorage.setItem("cartItems", JSON.stringify(currentCartItems.filter(item => item._id !== prod._id)));
-    
+
   }
 
   sortProducts = (event) => {
@@ -80,43 +83,45 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="flex flex-col min-h-screen">
+      <Provider store={store}>
+        <div className="flex flex-col min-h-screen">
 
-        <header className="p-3">
+          <header className="p-3">
 
-          <div className="grid grid-cols-3 gap-4">
-            <div className=""></div>
-            <div className="text-center">
-              <a href="/" className="text-yellow-600 font-bold">Wroomlando</a>
+            <div className="grid grid-cols-3 gap-4">
+              <div className=""></div>
+              <div className="text-center">
+                <a href="/" className="text-yellow-600 font-bold">Wroomlando</a>
+              </div>
+              <div className=""></div>
             </div>
-            <div className=""></div>
-          </div>
 
 
-        </header>
-        <main className="flex-grow p-3">
-          <div className="grid lg:grid-cols-4 md:grid-cols-4  gap-2 sm:grid-cols-1">
-            <div className="col-span-3">
-              <Filter count={this.state.products.length}
-                size={this.state.size}
-                sort={this.state.sort}
-                filterProducts={this.filterProducts}
-                sortProducts={this.sortProducts}
-              />
-              <Product products={this.state.products} addToCart={this.addToCart} />
+          </header>
+          <main className="flex-grow p-3">
+            <div className="grid lg:grid-cols-4 md:grid-cols-4  gap-2 sm:grid-cols-1">
+              <div className="col-span-3">
+                <Filter count={this.state.products.length}
+                  size={this.state.size}
+                  sort={this.state.sort}
+                  filterProducts={this.filterProducts}
+                  sortProducts={this.sortProducts}
+                />
+                <Product products={this.state.products} addToCart={this.addToCart} />
+              </div>
+              <div className="col-span-1">
+                <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} createOrder={this.createOrder} />
+              </div>
             </div>
-            <div className="col-span-1">
-              <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} createOrder={this.createOrder} />
-            </div>
-          </div>
 
 
 
-        </main>
-        <footer className="bg-gray-900 text-white p-3">
-          footer
-        </footer>
-      </div>
+          </main>
+          <footer className="bg-gray-900 text-white p-3">
+            Wroomlando &copy; 2020
+          </footer>
+        </div>
+      </Provider>
     );
   }
 }
