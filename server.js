@@ -40,6 +40,13 @@ app.post('/api/products/create', async (req, res) => {
     res.send(result);
 });
 
+
+app.get('/api/product/:id', async (req, res) => {
+    const id = req.params.id;
+    const prod = await Product.findById(id);
+    res.send(prod);
+});
+
 app.delete('/api/product/:id', async (req, res) => {
     const id = req.params.id;
     const deletedProduct = await Product.findByIdAndDelete(id);
